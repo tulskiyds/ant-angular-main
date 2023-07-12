@@ -1,0 +1,29 @@
+<h1>ТАБЛИЦА</h1>
+<div class="send-request">
+  <button nz-button nzType="primary" [disabled]="setOfCheckedId.size === 0" (click)="sendRequest()">
+    Отправить запрос
+  </button>
+  <span>Выбрано {{ setOfCheckedId.size }} Записей</span>
+</div>
+<nz-table #rowSelectionTable nzShowPagination nzShowSizeChanger [nzData]="listOfData"
+  (nzCurrentPageDataChange)="onCurrentPageDataChange($event)">
+  <thead>
+    <tr>
+      <th [nzChecked]="checked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)"></th>
+      <th>Имя</th>
+      <th>Возраст</th>
+      <th>Телефон</th>
+      <th>Адрес</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of rowSelectionTable.data">
+      <td [nzChecked]="setOfCheckedId.has(data.id)" [nzDisabled]="data.disabled"
+        (nzCheckedChange)="onItemChecked(data.id, $event)"></td>
+      <td>{{ data.name }}</td>
+      <td>{{ data.age }}</td>
+      <td>{{ data.telefon }}</td>
+      <td>{{ data.address }}</td>
+    </tr>
+  </tbody>
+</nz-table>
