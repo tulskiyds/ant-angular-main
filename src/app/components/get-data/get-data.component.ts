@@ -10,6 +10,7 @@ export class GetDataComponent {
 
   servData: any;
 
+  //получение данных
   constructor(http: HttpClient) {
     http.get('http://127.0.0.1:8000/ViewProcs2').subscribe( (response)=>{
       this.servData = response;
