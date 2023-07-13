@@ -12,15 +12,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
-import { TableComponent } from './table/table.component';
+import { TableComponent } from './components/table/table.component';
 import { NgZorroAntdModule } from './ng-zorro-antd.module';
+import { GetDataComponent } from './components/get-data/get-data.component';
 
 registerLocaleData(ru);
 
 @NgModule({
   declarations: [
     AppComponent,
-    TableComponent
+    TableComponent,
+    GetDataComponent
   ],
   imports: [
     BrowserModule,
