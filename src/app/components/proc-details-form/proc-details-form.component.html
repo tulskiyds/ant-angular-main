@@ -1,0 +1,190 @@
+<h1>Конкурс</h1>
+<nz-space nzDirection="vertical" class="form-content">
+  <div *nzSpaceItem nzTitle="Buttons" [nzOffset]="7" [nzSpan]="12">
+    <button
+      nz-button
+      nzType="primary"
+
+      (click)="handleSubmit()"
+    >
+      Сохранить
+    </button>
+    <!-- [disabled]="!validateForm.valid" -->
+    <button nz-button nzType="default" (click)="resetForm($event)">
+      Стереть
+    </button>
+    <button nz-button nzType="default" [routerLink]="''">Отмена</button>
+  </div>
+
+  <div *nzSpaceItem nzTitle="Form">
+    <form nz-form [formGroup]="konkursForm">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10">KONKURS_ID</nz-form-label>
+        <nz-form-control nzErrorTip="Введите KONKURS_ID">
+          <input
+            nz-input
+            formControlName="konkursId"
+            name="konkursId"
+            required="true"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10">KONKURS_NR</nz-form-label>
+        <nz-form-control nzErrorTip="Введите KONKURS_NR">
+          <input
+            nz-input
+            formControlName="konkursNr"
+            name="konkursNr"
+            required="true"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10">KONKURS_NAME</nz-form-label>
+        <nz-form-control nzErrorTip="Введите KONKURS_NAME">
+          <input
+            nz-input
+            formControlName="konkursName"
+            name="konkursName"
+            required="true"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10">BUKRS</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="bukrs" name="bukrs" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10">ORGKEY</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="orgKey" name="orgKey" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10">STAT</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="stat" name="stat" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10">CRT_DATE</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="crtDate" name="crtDate" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10">CRT_USER</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="crtUser" name="crtUser" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10">LOT_ID</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="lotId" name="lotId" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10">LOT_NR</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="lotNr" name="lotNr" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10">LOT_NAME</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="lotName" name="lotName" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10">EKORG</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="ekorg" name="ekorg" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10">FINAN_LIMIT_WOVAT</nz-form-label>
+        <nz-form-control>
+          <input
+            nz-input
+            formControlName="finanLimitWovat"
+            name="finanLimitWovat"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10">VAT_RATE</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="vatRate" name="vatRate" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10">FINAN_LIMIT_WVAT</nz-form-label>
+        <nz-form-control>
+          <input
+            nz-input
+            formControlName="finanLimitWvat"
+            name="finanLimitWvat"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10">LIFNR</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="lifnr" name="lifnr" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10">LIFNR_NAME</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="lifnrName" name="lifnrName" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10">OFR_DATE</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="ofrDate" name="ofrDate" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10">OFR_TIME</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="ofrTime" name="ofrTime" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10">PRICE_NDS</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="priceNds" name="priceNds" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10">PRICE_S_NDS</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="priceSNds" name="priceSNds" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10">DELIVER_DATE</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="deliverDate" name="deliverDate" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10">DELIVER_TIME</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="deliverTime" name="deliverTime" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10">WIN_FLD</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="winFld" name="winFld" />
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>
+</nz-space>

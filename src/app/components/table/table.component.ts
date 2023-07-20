@@ -1,28 +1,52 @@
 import { Component, OnInit } from '@angular/core';
-import { id_ID } from 'ng-zorro-antd/i18n';
-
-export interface Data {
-  id: number;
-  name: string;
-  age: number;
-  telefon: string;
-  address: string;
-  disabled: boolean;
-}
+import { DataService } from 'src/app/services/data.service';
+import { KonkursModel } from 'src/app/services/models/konkurs.model';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-
-  styleUrls: ['./table.component.css']
+  styleUrls: ['./table.component.css'],
 })
 export class TableComponent implements OnInit {
+  setOfCheckedId = new Set<number>();
+  listOfCurrentPageData: readonly KonkursModel[] = [];
+
   checked = false;
   loading = false;
   indeterminate = false;
-  listOfData: readonly Data[] = [];
-  listOfCurrentPageData: readonly Data[] = [];
-  setOfCheckedId = new Set<number>();
+
+  listOfSelection = [
+    {
+      text: 'Выбрать все строки',
+      onSelect: () => {
+        this.onAllChecked(true);
+      },
+    },
+    {
+      text: 'Выбрать четные строки',
+      onSelect: () => {
+        this.listOfCurrentPageData.forEach((data, index) =>
+          this.updateCheckedSet(data.id, index % 2 !== 0)
+        );
+        this.refreshCheckedStatus();
+      },
+    },
+    {
+      text: 'Выбрать нечетные строки',
+      onSelect: () => {
+        this.listOfCurrentPageData.forEach((data, index) =>
+          this.updateCheckedSet(data.id, index % 2 === 0)
+        );
+        this.refreshCheckedStatus();
+      },
+    },
+  ];
+
+  constructor(public dataService: DataService) {}
+
+  ngOnInit(): void {
+    this.dataService.fetchDataKonkurses();
+  }
 
   updateCheckedSet(id: number, checked: boolean): void {
     if (checked) {
@@ -32,15 +56,21 @@ export class TableComponent implements OnInit {
     }
   }
 
-  onCurrentPageDataChange(listOfCurrentPageData: readonly Data[]): void {
-    this.listOfCurrentPageData = listOfCurrentPageData;
+  onAllChecked(value: boolean): void {
+    this.listOfCurrentPageData.forEach((item) =>
+      this.updateCheckedSet(item.id, value)
+    );
     this.refreshCheckedStatus();
   }
 
   refreshCheckedStatus(): void {
-    const listOfEnabledData = this.listOfCurrentPageData.filter(({ disabled }) => !disabled);
-    this.checked = listOfEnabledData.every(({ id }) => this.setOfCheckedId.has(id));
-    this.indeterminate = listOfEnabledData.some(({ id }) => this.setOfCheckedId.has(id)) && !this.checked;
+    this.checked = this.listOfCurrentPageData.every((item) =>
+      this.setOfCheckedId.has(item.id)
+    );
+    this.indeterminate =
+      this.listOfCurrentPageData.some((item) =>
+        this.setOfCheckedId.has(item.id)
+      ) && !this.checked;
   }
 
   onItemChecked(id: number, checked: boolean): void {
@@ -48,16 +78,16 @@ export class TableComponent implements OnInit {
     this.refreshCheckedStatus();
   }
 
-  onAllChecked(checked: boolean): void {
-    this.listOfCurrentPageData
-      .filter(({ disabled }) => !disabled)
-      .forEach(({ id }) => this.updateCheckedSet(id, checked));
+  onCurrentPageDataChange($event: readonly KonkursModel[]): void {
+    this.listOfCurrentPageData = $event;
     this.refreshCheckedStatus();
   }
 
   sendRequest(): void {
     this.loading = true;
-    const requestData = this.listOfData.filter(data => this.setOfCheckedId.has(data.id));
+    const requestData = this.dataService.getData().filter((data) =>
+      this.setOfCheckedId.has(data.id)
+    );
     console.log(requestData);
     setTimeout(() => {
       this.setOfCheckedId.clear();
@@ -66,14 +96,4 @@ export class TableComponent implements OnInit {
     }, 1000);
   }
 
-  ngOnInit(): void {
-    this.listOfData = new Array(100).fill(0).map((_, index) => ({
-      id: index,
-      name: `Иван Иванович ${index}`,
-      age: Math.floor((Math.random() * 100) + 1),
-      telefon: `8(${Math.floor((Math.random() * 999))}) ${Math.floor((Math.random() * 9999999))}`,
-      address: `Воронеж, Улица ${index}`,
-      disabled: false
-    }));
-  }
 }

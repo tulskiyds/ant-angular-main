@@ -1,5 +1,10 @@
-
 import { NgModule } from '@angular/core';
+
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzButtonModule, NzButtonSize } from 'ng-zorro-antd/button';
+import { NzSpaceModule } from 'ng-zorro-antd/space';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
 
 // import { NzAffixModule } from 'ng-zorro-antd/affix';
 // import { NzAlertModule } from 'ng-zorro-antd/alert';
@@ -9,7 +14,7 @@ import { NgModule } from '@angular/core';
 // import { NzBackTopModule } from 'ng-zorro-antd/back-top';
 // import { NzBadgeModule } from 'ng-zorro-antd/badge';
 // import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
-// import { NzButtonModule } from 'ng-zorro-antd/button';
+
 // import { NzCalendarModule } from 'ng-zorro-antd/calendar';
 // import { NzCardModule } from 'ng-zorro-antd/card';
 // import { NzCarouselModule } from 'ng-zorro-antd/carousel';
@@ -26,14 +31,13 @@ import { NgModule } from '@angular/core';
 // import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 // import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 // import { NzEmptyModule } from 'ng-zorro-antd/empty';
-// import { NzFormModule } from 'ng-zorro-antd/form';
+
 // import { NzGridModule } from 'ng-zorro-antd/grid';
 // import { NzI18nModule } from 'ng-zorro-antd/i18n';
-import { NZ_ICONS, NzIconModule } from 'ng-zorro-antd/icon';
+// import { NZ_ICONS, NzIconModule } from 'ng-zorro-antd/icon';
 // import { NzImageModule } from 'ng-zorro-antd/image';
 // import { NzInputModule } from 'ng-zorro-antd/input';
 // import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
-// import { NzLayoutModule } from 'ng-zorro-antd/layout';
 // import { NzListModule } from 'ng-zorro-antd/list';
 // import { NzMentionModule } from 'ng-zorro-antd/mention';
 // import { NzMenuModule } from 'ng-zorro-antd/menu';
@@ -52,12 +56,12 @@ import { NZ_ICONS, NzIconModule } from 'ng-zorro-antd/icon';
 // import { NzSelectModule } from 'ng-zorro-antd/select';
 // import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 // import { NzSliderModule } from 'ng-zorro-antd/slider';
-// import { NzSpaceModule } from 'ng-zorro-antd/space';
+ 
 // import { NzSpinModule } from 'ng-zorro-antd/spin';
 // import { NzStatisticModule } from 'ng-zorro-antd/statistic';
 // import { NzStepsModule } from 'ng-zorro-antd/steps';
 // import { NzSwitchModule } from 'ng-zorro-antd/switch';
-import { NzTableModule } from 'ng-zorro-antd/table';
+
 // import { NzTabsModule } from 'ng-zorro-antd/tabs';
 // import { NzTagModule } from 'ng-zorro-antd/tag';
 // import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
@@ -79,6 +83,11 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 
 @NgModule({
   exports: [
+    NzTableModule,
+    NzFormModule,
+    NzButtonModule,
+    NzSpaceModule,
+    NzLayoutModule
     // NzAffixModule,
     // NzAlertModule,
     // NzAnchorModule,
@@ -86,7 +95,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
     // NzAvatarModule,
     // NzBackTopModule,
     // NzBadgeModule,
-    // NzButtonModule,
+    
     // NzBreadCrumbModule,
     // NzCalendarModule,
     // NzCardModule,
@@ -102,10 +111,9 @@ import { NzTableModule } from 'ng-zorro-antd/table';
     // NzDrawerModule,
     // NzDropDownModule,
     // NzEmptyModule,
-    // NzFormModule,
     // NzGridModule,
     // NzI18nModule,
-    NzIconModule,
+    // NzIconModule,
     // NzImageModule,
     // NzInputModule,
     // NzInputNumberModule,
@@ -134,7 +142,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
     // NzStatisticModule,
     // NzStepsModule,
     // NzSwitchModule,
-    NzTableModule,
+    
     // NzTabsModule,
     // NzTagModule,
     // NzTimePickerModule,
@@ -153,9 +161,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
     // NzCodeEditorModule,
     // NzGraphModule,
     // NzQRCodeModule,
-    // NzWaterMarkModule
-  ]
+    // NzWaterMarkModule,
+  ],
 })
-export class NgZorroAntdModule {
-
-}
+export class NgZorroAntdModule {}

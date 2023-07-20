@@ -1,20 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { NZ_I18N } from 'ng-zorro-antd/i18n';
-import { ru_RU } from 'ng-zorro-antd/i18n';
+import { NgZorroAntdModule } from './services/ng-zorro-antd.module';
+
 import { registerLocaleData } from '@angular/common';
-import ru from '@angular/common/locales/ru';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NzLayoutModule } from 'ng-zorro-antd/layout';
-import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { AppRoutingModule } from './app-routing.module';
+import ru from '@angular/common/locales/ru';
+
+import { AppComponent } from './app.component';
+import { KonkursComponent } from './components/konkurs/konkurs.component';
 import { TableComponent } from './components/table/table.component';
-import { NgZorroAntdModule } from './ng-zorro-antd.module';
-import { GetDataComponent } from './components/get-data/get-data.component';
+import { ProcDetailsFormComponent } from './components/proc-details-form/proc-details-form.component';
 
 registerLocaleData(ru);
 
@@ -22,7 +21,8 @@ registerLocaleData(ru);
   declarations: [
     AppComponent,
     TableComponent,
-    GetDataComponent
+    KonkursComponent,
+    ProcDetailsFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,13 +30,10 @@ registerLocaleData(ru);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NzLayoutModule,
-    NzMenuModule,
-    NgZorroAntdModule
+    NgZorroAntdModule,
+    ReactiveFormsModule,
   ],
-  providers: [
-    { provide: NZ_I18N, useValue: ru_RU }
-  ],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

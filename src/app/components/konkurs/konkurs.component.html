@@ -1,0 +1,4 @@
+<app-proc-details-form
+  [initialModel]="dataService.procDetails$ | async"
+  (submitModel)="submit($event)"
+></app-proc-details-form>

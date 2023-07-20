@@ -1,0 +1,17 @@
+[nz-form] {
+  max-width: 600px;
+}
+
+button {
+  margin-left: 8px;
+}
+
+:host {
+  text-align: left;
+}
+
+.form-content{
+  gap: 10px;
+}
+
+

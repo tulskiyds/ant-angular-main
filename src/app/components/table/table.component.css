@@ -1,9 +1,24 @@
+.send-request {
+  margin-bottom: 16px;
+}
 
-      .send-request {
-        margin-bottom: 16px;
-      }
+.send-request span {
+  margin-left: 8px;
+}
 
-      .send-request span {
-        margin-left: 8px;
-      }
-    
+.table-row {
+  cursor: pointer;
+}
+
+.table-row:nth-child(even) {
+  background-color: rgb(190, 230, 255)
+}
+
+.table-row:nth-child(odd) {
+  background-color: rgb(218, 241, 255)
+}
+
+[nz-button] {
+  margin-right: 8px;
+  margin-bottom: 12px;
+}
