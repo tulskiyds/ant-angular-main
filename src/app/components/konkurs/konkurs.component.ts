@@ -14,8 +14,8 @@ export class KonkursComponent implements OnInit {
   private confSub?: Subscription;
 
   konkursId$ = this.route.params.pipe(
-    map((params) => params['konkursId']),
-    filter((id) => !!id)
+    map((params) => params['konkursId'])
+    // filter((id) => !!id)
   );
   // selectedKonkurs$ = this.konkursId$.pipe(
   //   switchMap((id) =>
@@ -34,6 +34,9 @@ export class KonkursComponent implements OnInit {
 
   ngOnInit(): void {
     this.procSub = this.konkursId$.subscribe((konkursId) => {
+      if (!konkursId) {
+        return;
+      }
       this.dataService.fetchDataProcDetails(konkursId);
     });
     this.confSub = this.konkursId$.subscribe((konkursId) => {

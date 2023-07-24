@@ -17,9 +17,7 @@ export class DataService {
 
   private konkursesSubject$ = new BehaviorSubject<KonkursModel[]>([]);
   private procDetailsSubject$ = new Subject<ProcDetailsModel | null>();
-  private procConfigFieldSubject$ = new BehaviorSubject<ProcConfigFieldModel[]>(
-    []
-  );
+  private procConfigFieldSubject$ = new Subject< { [key: string]: ProcConfigFieldModel }>();
 
   public konkurses$ = this.konkursesSubject$.asObservable();
   public procDetails$ = this.procDetailsSubject$.asObservable();
@@ -37,10 +35,6 @@ export class DataService {
     });
   }
 
-  getConfigField(): ProcConfigFieldModel[] {
-    return this.procConfigFieldSubject$.value;
-  }
-
   fetchConfigField(konkursId: string): void {
     if (konkursId) {
       this.confUrl = this.configFieldUrl + konkursId;
@@ -48,7 +42,11 @@ export class DataService {
       this.confUrl = this.configFieldNewUrl;
     }
     this.http.get<any>(this.confUrl).subscribe((rawData) => {
-      this.procConfigFieldSubject$.next(rawData.items);
+      const configForm: { [key: string]: ProcConfigFieldModel } = {};
+      rawData.items.forEach((item:any) => {
+        configForm[item.fieldName] = item;
+      });      
+      this.procConfigFieldSubject$.next(configForm);
     });
   }
 

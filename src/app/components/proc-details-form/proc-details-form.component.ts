@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormBuilder } from '@angular/forms';
+import { ProcConfigFieldModel } from 'src/app/services/models/proc-config-field.models';
 import { ProcDetailsModel } from 'src/app/services/models/proc-details.models';
 
 @Component({
@@ -39,15 +40,18 @@ export class ProcDetailsFormComponent implements OnInit {
   });
 
   @Input()
-  public set initialModel(value: ProcDetailsModel | undefined) {
+  set initialModel(value: ProcDetailsModel | undefined) {
     this.mapInitialModel(value);
   }
+
+  @Input()
+  fieldsConfig: { [key: string]: ProcConfigFieldModel } | null = null;
 
   @Output() submitModel = new EventEmitter<ProcDetailsModel>();
 
   ngOnInit(): void {}
 
-  handleSubmit(): void{
+  handleSubmit(): void {
     this.submitModel.emit(this.konkursForm.value);
   }
 

@@ -1,12 +1,8 @@
+<!-- {{test}} -->
 <h1>Конкурс</h1>
 <nz-space nzDirection="vertical" class="form-content">
   <div *nzSpaceItem nzTitle="Buttons" [nzOffset]="7" [nzSpan]="12">
-    <button
-      nz-button
-      nzType="primary"
-
-      (click)="handleSubmit()"
-    >
+    <button nz-button nzType="primary" (click)="handleSubmit()">
       Сохранить
     </button>
     <!-- [disabled]="!validateForm.valid" -->
@@ -17,15 +13,17 @@
   </div>
 
   <div *nzSpaceItem nzTitle="Form">
-    <form nz-form [formGroup]="konkursForm">
-      <nz-form-item>
-        <nz-form-label [nzSpan]="10">KONKURS_ID</nz-form-label>
+    <form nz-form *ngIf="fieldsConfig" [formGroup]="konkursForm">
+      <nz-form-item *ngIf="fieldsConfig['konkurs_id']?.visible">
+        <nz-form-label [nzSpan]="10">{{
+          fieldsConfig["konkurs_id"]?.fieldDescript
+        }}</nz-form-label>
         <nz-form-control nzErrorTip="Введите KONKURS_ID">
           <input
             nz-input
             formControlName="konkursId"
             name="konkursId"
-            required="true"
+            [required]="fieldsConfig['konkurs_id']?.required"
           />
         </nz-form-control>
       </nz-form-item>
@@ -99,10 +97,19 @@
           <input nz-input formControlName="lotName" name="lotName" />
         </nz-form-control>
       </nz-form-item>
-      <nz-form-item>
-        <nz-form-label [nzSpan]="10">EKORG</nz-form-label>
+      <nz-form-item *ngIf="fieldsConfig['ekorg']?.visible">
+        <nz-form-label [nzSpan]="10">{{
+          fieldsConfig["ekorg"]?.fieldDescript
+        }}</nz-form-label>
         <nz-form-control>
-          <input nz-input formControlName="ekorg" name="ekorg" />
+          <input
+            nz-input
+            formControlName="ekorg"
+            name="ekorg"
+            [required]="fieldsConfig['ekorg']?.required"
+            [readonly]="fieldsConfig['ekorg']?.readonly"
+            [disabled]="fieldsConfig['ekorg']?.readonly"
+          />
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>

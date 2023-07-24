@@ -1,4 +1,5 @@
 <app-proc-details-form
   [initialModel]="dataService.procDetails$ | async"
+  [fieldsConfig]="dataService.procConfigField$ | async"
   (submitModel)="submit($event)"
 ></app-proc-details-form>

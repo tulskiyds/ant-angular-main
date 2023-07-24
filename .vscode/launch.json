@@ -3,19 +3,12 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "ng serve",
+      "name": "QWERTY",
       "type": "chrome",
       "request": "launch",
-      "preLaunchTask": "npm: start",
+      // "preLaunchTask": "npm: start",
       "url": "http://localhost:4200/",
       "webRoot": "${workspaceFolder}"
-    },
-    {
-      "name": "ng test",
-      "type": "chrome",
-      "request": "launch",
-      // "preLaunchTask": "npm: test",
-      "url": "http://localhost:9876/debug.html"
     }
   ]
 }

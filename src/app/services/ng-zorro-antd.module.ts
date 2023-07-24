@@ -5,6 +5,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzButtonModule, NzButtonSize } from 'ng-zorro-antd/button';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzInputModule } from 'ng-zorro-antd/input';
 
 // import { NzAffixModule } from 'ng-zorro-antd/affix';
 // import { NzAlertModule } from 'ng-zorro-antd/alert';
@@ -87,7 +88,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
     NzFormModule,
     NzButtonModule,
     NzSpaceModule,
-    NzLayoutModule
+    NzLayoutModule,
     // NzAffixModule,
     // NzAlertModule,
     // NzAnchorModule,
@@ -115,7 +116,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
     // NzI18nModule,
     // NzIconModule,
     // NzImageModule,
-    // NzInputModule,
+    NzInputModule
     // NzInputNumberModule,
     // NzLayoutModule,
     // NzListModule,
